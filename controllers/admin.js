@@ -12,7 +12,7 @@ const adminRegister = async (req, res) => {
     const { email, name, password } = req.body;
     const admin = await Admin.registerAdmin(email, name, password);
     const token = createToken(admin._id);
-    res.status(201).json({ admin, token });
+    res.status(201).json({ email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -23,7 +23,7 @@ const adminLogin = async (req, res) => {
     const { email, password } = req.body;
     const admin = await Admin.loginAdmin(email, password);
     const token = createToken(admin._id);
-    res.status(200).json({ admin, token });
+    res.status(200).json({ email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
