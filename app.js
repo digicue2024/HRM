@@ -23,7 +23,6 @@ app.use("/api/user", userRouter);
 app.use("/api/client", clientRouter);
 app.use("/api/admin/user", userRouter);
 
-
 mongoose
   .connect(process.env.MONG_URI)
   .then(() => console.log("Database Connected"))
