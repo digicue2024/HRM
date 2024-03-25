@@ -54,7 +54,7 @@ const userLogin = async (req, res) => {
 const getStaff = async (req, res) => {
   try {
     const users = await User.find({}).select("-password");
-    res.json(users);
+    res.json({ users: users });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

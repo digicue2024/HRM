@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.post("/register", userRegister);
 router.post("/login", userLogin);
-router.get("/staff", getStaff);
+router.get("/addstaff", getStaff);
 
 module.exports = router;
