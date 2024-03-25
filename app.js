@@ -1,13 +1,14 @@
-var express = require("express");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-var indexRouter = require("./routes/index");
-var adminRouter = require("./routes/admin");
+const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/admin");
+const userRouter = require("./routes/user");
 
-var app = express();
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/api/admin", adminRouter);
+app.use("/api/user", userRouter);
 
 mongoose
   .connect(process.env.MONG_URI)
