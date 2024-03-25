@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
+const clientRouter = require("./routes/client");
 
 const app = express();
 
@@ -17,7 +18,11 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/api/admin", adminRouter);
+
+app.use("/api/user", userRouter);
+app.use("/api/client", clientRouter);
 app.use("/api/admin/user", userRouter);
+
 
 mongoose
   .connect(process.env.MONG_URI)
