@@ -7,6 +7,8 @@ const createToken = (_id) => {
   });
 };
 
+// to register an account for the admin  ======================
+
 const adminRegister = async (req, res) => {
   try {
     const { email, name, password } = req.body;
@@ -17,6 +19,8 @@ const adminRegister = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+// admin login  ===============================================
 
 const adminLogin = async (req, res) => {
   try {

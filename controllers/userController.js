@@ -51,13 +51,27 @@ const userLogin = async (req, res) => {
   }
 };
 
+// to create new staffs ==================================
+
 const getStaff = async (req, res) => {
   try {
     const users = await User.find({}).select("-password");
-    res.json(users);
+    res.json({users});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-module.exports = { userRegister, userLogin, getStaff };
+// allows us to retrieve users with same department from the database based on the department name passed through the URL.
+
+const getStaffByDepartment = async (req, res) => {
+  try {
+    const { department } = req.params;
+    const users = await User.find({ department }).select("-password");
+    res.json({users});
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { userRegister, userLogin, getStaff, getStaffByDepartment };

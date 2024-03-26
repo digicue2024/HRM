@@ -21,9 +21,11 @@ app.use("/api/admin", adminRouter);
 app.use("/api/user", userRouter);
 app.use("/api/client", clientRouter);
 
+
 mongoose
   .connect(process.env.MONG_URI)
   .then(() => console.log("Database Connected"))
   .catch((err) => console.error("Database Connection Error:", err));
 
 module.exports = app;
+

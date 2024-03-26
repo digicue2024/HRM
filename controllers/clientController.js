@@ -1,5 +1,7 @@
 const Client = require("../models/clientModel");
 
+// to add new clients ==================================
+
 const addClient = async (req, res) => {
   try {
     const clientDetails = req.body;
@@ -14,4 +16,17 @@ const addClient = async (req, res) => {
   }
 };
 
-module.exports = { addClient };
+
+// to display all client details  =======================
+
+const displayClients = async (req, res) => {
+  try {
+    const allClients = await Client.find();
+    res.json({allClients}); 
+  } catch (err) {
+    console.error('Error fetching clients', err);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+module.exports = { addClient, displayClients };
