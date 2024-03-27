@@ -7,7 +7,8 @@ const createToken = (_id) => {
   });
 };
 
-// to register an account for the admin  ======================
+// to register an account for the admin 
+// http://localhost:3000/api/admin/register
 
 const adminRegister = async (req, res) => {
   try {
@@ -20,7 +21,8 @@ const adminRegister = async (req, res) => {
   }
 };
 
-// admin login  ===============================================
+// admin login 
+// http://localhost:3000/api/admin/login
 
 const adminLogin = async (req, res) => {
   try {

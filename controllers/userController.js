@@ -40,6 +40,9 @@ const userRegister = async (req, res) => {
   }
 };
 
+// staff login
+// http://localhost:3000/api/admin/user/login
+
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -51,7 +54,8 @@ const userLogin = async (req, res) => {
   }
 };
 
-// to create new staffs ==================================
+// to create new staffs 
+// http://localhost:3000/api/admin/user/register
 
 const getStaff = async (req, res) => {
   try {
@@ -67,6 +71,7 @@ const getStaff = async (req, res) => {
 };
 
 // allows us to retrieve users with same department from the database based on the department name passed through the URL.
+// http://localhost:3000/api/admin/user/staff/department/digital marketing
 
 const getStaffByDepartment = async (req, res) => {
   try {
