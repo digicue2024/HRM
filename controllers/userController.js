@@ -83,4 +83,21 @@ const getStaffByDepartment = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, userLogin, getStaff, getStaffByDepartment };
+// allows to display the details of an particular user
+// http://localhost:3000/api/admin/user/staff/6602a8c2fdcd30e9eac3010e
+
+const getUserByID = async (req, res) => {
+  try {
+    const { id } = req.params ;
+    let existingUser = await User.findById(id); // Changed from Client to User
+    if (!existingUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json({ existingUser });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+module.exports = { userRegister, userLogin, getStaff, getStaffByDepartment, getUserByID };
