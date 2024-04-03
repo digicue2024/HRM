@@ -89,7 +89,7 @@ const getStaffByDepartment = async (req, res) => {
 const getUserByID = async (req, res) => {
   try {
     const { id } = req.params ;
-    let existingUser = await User.findById(id); // Changed from Client to User
+    let existingUser = await User.findById(id); 
     if (!existingUser) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -99,5 +99,42 @@ const getUserByID = async (req, res) => {
   }
 };
 
+// to edit the user details by admin
+// http://localhost:3000/api/admin/user/staff/edit
 
-module.exports = { userRegister, userLogin, getStaff, getStaffByDepartment, getUserByID };
+const userupdate = async (req, res) => {
+  try {
+    const {
+      email,
+      name,
+      password,
+      image,
+      dateofbirth,
+      joiningdate,
+      salary,
+      department,
+      phone,
+      address,
+    } = req.body;
+    const user = await User.updateUser(
+      email,
+      name,
+      password,
+      image,
+      dateofbirth,
+      joiningdate,
+      salary,
+      department,
+      phone,
+      address
+    );
+    const token = createToken(user._id);
+    res.status(201).json({ email, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
+
+module.exports = { userRegister, userLogin, getStaff, getStaffByDepartment, getUserByID ,userupdate};
