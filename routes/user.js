@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAuth = require('../middleware/requireUserAuth')
 
 const {
   userRegister,
@@ -16,7 +17,8 @@ router.post("/login", userLogin);
 
 router.get("/staff", getStaff);
 router.get("/staff/department/:department", getStaffByDepartment);
-router.get("/staff/:id", getUserByID);
+router.use(requireAuth)
+router.get("/staff/single", getUserByID);
 router.patch("/staff/edit",userupdate)
 
 module.exports = router;
