@@ -88,15 +88,13 @@ const getStaffByDepartment = async (req, res) => {
 
 const getUserByID = async (req, res) => {
   try {
-    const { id } = req.params ;
-    let existingUser = await User.findById(id); 
-    if (!existingUser) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.json({ existingUser });
+    const user_id = req.user._id; // Assuming the user ID is passed as a parameter in the request
+    const user = await User.findById(user_id).select("-password"); // Exclude the password field from the response
+    res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    res.status(400).json({ error: error.message });
+  }
+
 };
 
 // to edit the user details by admin
