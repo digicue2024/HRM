@@ -63,12 +63,31 @@ const editClient = async (req, res) => {
 
     existingClient = await existingClient.save();
 
-    res.status(200).json({ message: "Client updated successfully", client: existingClient });
-    console.log({message: "client added successfully",  client: existingClient});
+    res
+      .status(200)
+      .json({ message: "Client updated successfully", client: existingClient });
+    console.log({
+      message: "client added successfully",
+      client: existingClient,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// allows us to retrieve clients with same department from the database based on the department name passed through the URL.
+// http://localhost:3000/api/admin/clients/:department
+
+
+const getClientByDepartment = async (req, res) => {
+  try {
+    const { department } = req.params;
+    const clients = await Client.find({ department }); 
+    res.json({ clients });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
 
-module.exports = { addClient, displayClients, getClientById, editClient };
+module.exports = { addClient, displayClients, getClientById, editClient, getClientByDepartment };

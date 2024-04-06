@@ -94,7 +94,6 @@ const getUserByID = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-
 };
 
 // to edit the user details by admin
