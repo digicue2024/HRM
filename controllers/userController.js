@@ -7,6 +7,8 @@ const createToken = (_id) => {
   });
 };
 
+// http://localhost:3000/api/admin/user/register
+
 const userRegister = async (req, res) => {
   try {
     const {
