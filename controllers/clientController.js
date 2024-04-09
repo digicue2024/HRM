@@ -1,21 +1,31 @@
 const Client = require("../models/clientModel");
 
-// to add new clients
+// to add new clients 
 // http://localhost:3000/api/admin/client/add
 
 const addClient = async (req, res) => {
+  const message = "client added successfully"; 
   try {
-    const clientDetails = req.body;
+    const { name, date, businessName, description, phoneNumber, department } = req.body;
 
-    const newClient = new Client(clientDetails);
-    console.log(newClient);
+    const newClient = new Client({
+      name,
+      date,
+      businessName,
+      description,
+      phoneNumber,
+      department,
+      workStatus: "not yet started"
+    });
+
     await newClient.save();
 
-    res.status(201).json({ newClient });
+    res.status(201).json({ message });
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
+
 
 // to display all client details
 // http://localhost:3000/api/admin/client/allclients
