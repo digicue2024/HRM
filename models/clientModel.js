@@ -26,6 +26,10 @@ const clientSchema = new Schema({
     type: String,
     required: true,
   },
+  workStatus: {
+    type: String,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model("Client", clientSchema);
