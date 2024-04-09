@@ -6,7 +6,8 @@ const {
   displayClients,
   getClientById,
   editClient,
-  getClientByDepartment 
+  getClientByDepartment,
+  updateWorkStatus,
 } = require("../controllers/clientController");
 
 router.use(bodyParser.json());
@@ -15,5 +16,7 @@ router.post("/add", addClient);
 router.get("/allclients", displayClients);
 router.get("/clients/:id", getClientById);
 router.put("/editClient/:id", editClient);
+router.put("/updateWorkStatus/:id", updateWorkStatus); // New route for updating work status
 router.get("/clients/department/:department", getClientByDepartment);
+
 module.exports = router;

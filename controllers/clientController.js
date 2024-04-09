@@ -99,5 +99,31 @@ const getClientByDepartment = async (req, res) => {
   }
 };
 
+// editing the work status of an particular client
+// http://localhost:3000/api/admin/client/updateWorkStatus/6614d5fa94ac0922c98e8743
 
-module.exports = { addClient, displayClients, getClientById, editClient, getClientByDepartment };
+
+const updateWorkStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { workStatus } = req.body;
+
+    let client = await Client.findById(id);
+
+    if (!client) {
+      return res.status(404).json({ error: "Client not found" });
+    }
+
+    client.workStatus = workStatus;
+
+    client = await client.save();
+
+    res.status(200).json({ message: "Work status updated successfully", client });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+module.exports = { addClient, displayClients, getClientById, editClient, getClientByDepartment, updateWorkStatus };
