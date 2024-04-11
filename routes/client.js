@@ -16,7 +16,7 @@ router.post("/add", addClient);
 router.get("/allclients", displayClients);
 router.get("/clients/:id", getClientById);
 router.patch("/editClient/:id", editClient);
-router.patch("/updateWorkStatus/:id", updateWorkStatus); // New route for updating work status
+router.patch("/updateWorkStatus/:id", updateWorkStatus); 
 router.get("/clients/department/:department", getClientByDepartment);
 
 module.exports = router;
