@@ -1,5 +1,6 @@
 const Admin = require("../models/adminModels");
 const jwt = require("jsonwebtoken");
+const Client = require("../models/clientModel");
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.ADMIN_JWT_SECRET, {
@@ -35,4 +36,17 @@ const adminLogin = async (req, res) => {
   }
 };
 
-module.exports = { adminRegister, adminLogin };
+// to display all the details of the clients (mainly work status)
+// http://localhost:3000/api/admin/allclients
+
+const allclients = async (req, res) => {
+  try {
+    const clients = await Client.find();
+    res.status(200).json(clients);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+module.exports = { adminRegister, adminLogin, allclients};
