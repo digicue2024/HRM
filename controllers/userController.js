@@ -7,6 +7,7 @@ const createToken = (_id) => {
   });
 };
 
+// creating new user by admin
 // http://localhost:3000/api/admin/user/register
 
 const userRegister = async (req, res) => {
@@ -56,8 +57,8 @@ const userLogin = async (req, res) => {
   }
 };
 
-// to create new staffs 
-// http://localhost:3000/api/admin/user/register
+// all staffs
+// http://localhost:3000/api/admin/user/staff
 
 const getStaff = async (req, res) => {
   try {
