@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-router.post("/register", userRegister);
+router.post("/staff/register", userRegister);
 router.post("/login", userLogin);
 
 router.get("/staff", getStaff);
