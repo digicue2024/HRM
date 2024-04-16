@@ -86,18 +86,21 @@ const editClient = async (req, res) => {
 };
 
 // allows us to retrieve clients with same department from the database based on the department name passed through the URL.
-// http://localhost:3000/api/admin/clients/:department
-
+// http://localhost:3000/api/admin/clients/department/:department
 
 const getClientByDepartment = async (req, res) => {
   try {
     const { department } = req.params;
+    console.log("Department:", department); // Add this line for debugging
     const clients = await Client.find({ department }); 
+    console.log("Clients:", clients); // Add this line for debugging
     res.json({ clients });
   } catch (error) {
+    console.error("Error:", error); // Add this line for debugging
     res.status(500).json({ error: error.message });
   }
 };
+
 
 // editing the work status of an particular client
 // http://localhost:3000/api/admin/client/updateWorkStatus/6614d5fa94ac0922c98e8743
