@@ -8,7 +8,7 @@ const createToken = (_id) => {
 };
 
 // creating new user by admin
-// http://localhost:3000/api/admin/user/register
+// http://localhost:3000/api/admin/user/staff/register
 
 const userRegister = async (req, res) => {
   try {
