@@ -17,7 +17,7 @@ router.post("/login", userLogin);
 
 router.get("/staff", getStaff);
 router.get("/staff/department/:department", getStaffByDepartment);
-router.use(requireAuth)
+
 router.get("/staff/single", getUserByID);
 router.patch("/staff/edit",userupdate)
 
