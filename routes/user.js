@@ -15,6 +15,8 @@ const router = express.Router();
 router.post("/staff/register", userRegister);
 router.post("/login", userLogin);
 
+router.use(requireAuth);
+
 router.get("/staff", getStaff);
 router.get("/staff/department/:department", getStaffByDepartment);
 
