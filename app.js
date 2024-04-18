@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/api/admin", adminRouter);
 
-app.use("/api/admin/client", clientRouter);
+app.use("/api/admin/clients", clientRouter);
 app.use("/api/admin/user", userRouter);
 
 mongoose
