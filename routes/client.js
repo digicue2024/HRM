@@ -17,6 +17,6 @@ router.get("/allclients", displayClients);
 router.get("/clients/:id", getClientById);
 router.patch("/editClient/:id", editClient);
 router.patch("/updateWorkStatus/:id", updateWorkStatus); 
-router.get("/clients/department/:department", getClientByDepartment);
+router.get("/department/:department", getClientByDepartment);
 
 module.exports = router;
